@@ -1,0 +1,267 @@
+body {
+    background-image: url('img/pxfuel.jpg');
+    background-repeat: no-repeat;
+    background-size: 120%;
+    transition: background-size 1s ease, background-color 1s ease;
+    background-position: center center;
+    color: #1c0033;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.transicao {
+    background-size: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Clareamento após transição */
+}
+
+.inicio {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    transition: opacity 1s ease;
+    /* Apenas a opacidade */
+}
+
+.inicio.diminui {
+    opacity: 0;
+    /* Opacidade muda para 0 quando a classe 'diminui' é adicionada */
+}
+
+.inicio-box {
+    text-align: center;
+    background-color: rgba(248, 60, 255, 0.021);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    /* Aumenta o tamanho da caixa */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+    /* Aumenta o tamanho da caixa */
+    transition: transform 1s ease;
+    color: #9b4989;
+    text-shadow: 0 0 30px #803c71;
+}
+
+.inicio-box.diminui {
+    transform: scale(0.9);
+}
+
+.inicio h1 {
+    font-size: 2.5em;
+    /* Aumenta o tamanho da fonte */
+    margin-bottom: 30px;
+}
+
+.btn-iniciar {
+    background-color: #d63f8c;
+    border: 2px solid #c93b84;
+    color: #fff;
+    padding: 15px 30px;
+    /* Aumenta o tamanho do botão */
+    font-size: 18px;
+    /* Aumenta o tamanho da fonte do botão */
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.548);
+}
+
+.btn-iniciar:hover {
+    background-color: #ec5a9a;
+    box-shadow: 0 0 12px rgb(236, 91, 255);
+    transform: scale(1.05);
+}
+
+.btn-iniciar:active {
+    background-color: #b5386b;
+    box-shadow: 0 4px 8px rgba(214, 63, 140, 0.3);
+}
+
+.main-content {
+    position: absolute;
+    width: 700px;
+    height: 200px;
+    display: none;
+    /* Inicialmente oculto */
+}
+
+.passo {
+    position: absolute;
+    width: 700px;
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.082);
+    backdrop-filter: blur(10px);
+    border: 1px solid white;
+    border-radius: 50px;
+    padding: 20px;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.11);
+    font-weight: 600;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.passo.ativo {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.passo.entrando {
+    animation: slide-down 0.5s forwards;
+}
+
+.passo.saindo {
+    animation: slide-up 0.5s forwards;
+}
+
+@keyframes slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+
+.passo.entrando {
+    animation: slide-down 0.5s forwards;
+}
+
+.passo.saindo {
+    animation: slide-up 0.5s forwards;
+}
+
+/* botões */
+.minimal-button {
+    background-color: #d63f8c;
+    border: 2px solid #c93b84;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, transform 0.3s;
+    border-radius: 25px;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.548);
+}
+
+.minimal-button:hover {
+    background-color: #ec5a9a;
+    box-shadow: 0 0 12px rgb(236, 91, 255);
+    transform: scale(1.05);
+}
+
+.minimal-button:active {
+    background-color: #b5386b;
+    box-shadow: 0 4px 8px rgba(214, 63, 140, 0.3);
+}
+
+
+
+/* Classe aplicada quando uma seção final está visível */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    /* Transparente inicialmente */
+    z-index: -1;
+    /* Certifique-se de que o fundo fica atrás do conteúdo */
+    transition: background-color 0.5s ease, opacity 0.5s ease;
+}
+
+body.fim {
+    background-size: 150%;
+    /* Aumenta o zoom */
+}
+
+body.fim::before {
+    background: rgba(0, 0, 0, 0.8);
+    /* Escurece o fundo */
+}
+
+
+
+
+
+
+
+.final-box {
+    position: absolute;
+    width: 700px;
+    background-color: rgba(39, 0, 39, 0.041);
+    /* Caixa verde com transparência */
+    border-radius: 25px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+    color: #9b4989;
+    text-shadow: 0 0 30px #803c71;
+    font-weight: 600;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 100;
+    /* Garante que fique acima dos outros elementos */
+    visibility: hidden;
+    /* Inicialmente escondida */
+}
+
+.final-box-hidden {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(100%);
+}
+
+.final-box-visible {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.final-content {
+    background-color: rgba(39, 0, 39, 0.041);
+    /* Fundo escuro para o conteúdo */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+
+
+
