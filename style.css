@@ -52,6 +52,11 @@ body.transicao {
     text-shadow: 0 0 30px #803c71;
 }
 
+.8finais{
+    text-shadow: 0 0 30px #80c71;
+}
+
+
 .inicio-box.diminui {
     transform: scale(0.9);
 }
